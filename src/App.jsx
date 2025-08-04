@@ -9,7 +9,8 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Router>
+    // basename="/dynamic"
+    <Router basename="/dynamic">
       <Navbar />
       <Routes>
         <Route path="/" element={<Blogs />} />

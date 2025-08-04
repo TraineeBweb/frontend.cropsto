@@ -58,7 +58,7 @@ const Navbar = () => {
               <div className="header-inner">
                 <div className="header-left">
                   <div className="logo-site">
-                    <a href="https://www.cropsto.com/index.html">
+                    <a href="https://cropsto.com/index.html">
                       <img src="/images/logo/logo.png" alt="" />
                     </a>
                   </div>
@@ -66,44 +66,40 @@ const Navbar = () => {
                 <div className="main-nav">
                   <ul className="nav-list">
                     <li className="item has-child ">
-                      <a href="https://www.cropsto.com/index.html">Home </a>
+                      <a href="https://cropsto.com/index.html">Home </a>
                     </li>
                     <li className="item has-child ">
-                      <a href="https://www.cropsto.com/about.html">About Us</a>
+                      <a href="https://cropsto.com/about.html">About Us</a>
                     </li>
                     <li className="item has-child ">
-                      <a href="https://www.cropsto.com/products.html">
-                        Products
-                      </a>
+                      <a href="https://cropsto.com/products.html">Products</a>
                     </li>
                     <li className="item has-child ">
                       <a href="javascript:void(0)">Sustainability</a>
                       <ul className="sub-nav">
                         <li>
-                          <a href="https://www.cropsto.com/recycling.html">
+                          <a href="https://cropsto.com/recycling.html">
                             <span>Recycling</span>
                           </a>
                         </li>
                         <li>
-                          <a href="https://www.cropsto.com/initiatives.html">
+                          <a href="https://cropsto.com/initiatives.html">
                             <span>Initiatives</span>
                           </a>
                         </li>
                       </ul>
                     </li>
                     <li className="item has-child current-menu">
-                      <a href="/">Blog</a>
+                      <a href="/dynamic">Blog</a>
                     </li>
                     <li className="item has-child">
-                      <a href="https://www.cropsto.com/contact.aspx">
-                        Contact Us
-                      </a>
+                      <a href="https://cropsto.com/contact.aspx">Contact Us</a>
                     </li>
                   </ul>
                 </div>
                 <div className="header-right">
                   <a
-                    href="https://www.cropsto.com/contact.aspx"
+                    href="https://cropsto.com/contact.aspx"
                     className="tf-btn gap-30"
                   >
                     <span className="text-style">Get In Touch!</span>
@@ -122,7 +118,7 @@ const Navbar = () => {
                   <div className="top">
                     <div className="logo">
                       <a
-                        href="https://www.cropsto.com/index.html"
+                        href="https://cropsto.com/index.html"
                         rel="home"
                         className="main-logo"
                       >
@@ -141,7 +137,7 @@ const Navbar = () => {
                         <li className="menu-item menu-item-has-children-mobile ">
                           <a
                             className="item-menu-mobile"
-                            href="https://www.cropsto.com/index.html"
+                            href="https://cropsto.com/index.html"
                           >
                             Home
                           </a>
@@ -149,7 +145,7 @@ const Navbar = () => {
                         <li className="menu-item menu-item-has-children-mobile">
                           <a
                             className="item-menu-mobile"
-                            href="https://www.cropsto.com/about.html"
+                            href="https://cropsto.com/about.html"
                           >
                             About Us
                           </a>
@@ -157,7 +153,7 @@ const Navbar = () => {
                         <li className="menu-item menu-item-has-children-mobile ">
                           <a
                             className="item-menu-mobile"
-                            href="https://www.cropsto.com/products.html"
+                            href="https://cropsto.com/products.html"
                           >
                             Products
                           </a>
@@ -172,12 +168,12 @@ const Navbar = () => {
                           </a>
                           <ul className="sub-menu-mobile">
                             <li className="menu-item">
-                              <a href="https://www.cropsto.com/recycling.html">
+                              <a href="https://cropsto.com/recycling.html">
                                 Recycling
                               </a>
                             </li>
                             <li className="menu-item">
-                              <a href="https://www.cropsto.com/initiatives.html">
+                              <a href="https://cropsto.com/initiatives.html">
                                 Initiatives
                               </a>
                             </li>
@@ -191,7 +187,7 @@ const Navbar = () => {
                         <li className="menu-item menu-item-has-children-mobile ">
                           <a
                             className="item-menu-mobile"
-                            href="https://www.cropsto.com/contact.aspx"
+                            href="https://cropsto.com/contact.aspx"
                           >
                             Contact Us
                           </a>
@@ -263,7 +259,7 @@ const Navbar = () => {
                 <div className="header-inner ">
                   <div className="header-left">
                     <div className="logo-site">
-                      <a href="https://www.cropsto.com/index.html">
+                      <a href="https://cropsto.com/index.html">
                         <img src="/images/logo/logo.png" alt="" />
                       </a>
                     </div>
@@ -271,28 +267,24 @@ const Navbar = () => {
                   <div className="main-nav">
                     <ul className="nav-list">
                       <li className="item has-child">
-                        <a href="https://www.cropsto.com/index.html">Home </a>
+                        <a href="https://cropsto.com/index.html">Home </a>
                       </li>
                       <li className="item has-child ">
-                        <a href="https://www.cropsto.com/about.html">
-                          About Us
-                        </a>
+                        <a href="https://cropsto.com/about.html">About Us</a>
                       </li>
                       <li className="item has-child ">
-                        <a href="https://www.cropsto.com/products.html">
-                          Products
-                        </a>
+                        <a href="https://cropsto.com/products.html">Products</a>
                       </li>
                       <li className="item has-child ">
                         <a href="javascript:void(0)">Sustainability</a>
                         <ul className="sub-nav">
                           <li>
-                            <a href="https://www.cropsto.com/recycling.html">
+                            <a href="https://cropsto.com/recycling.html">
                               <span>Recycling</span>
                             </a>
                           </li>
                           <li>
-                            <a href="https://www.cropsto.com/initiatives.html">
+                            <a href="https://cropsto.com/initiatives.html">
                               <span>Initiatives</span>
                             </a>
                           </li>
@@ -302,7 +294,7 @@ const Navbar = () => {
                         <a href="/">Blog</a>
                       </li>
                       <li className="item has-child">
-                        <a href="https://www.cropsto.com/contact.aspx">
+                        <a href="https://cropsto.com/contact.aspx">
                           Contact Us
                         </a>
                       </li>
@@ -310,7 +302,7 @@ const Navbar = () => {
                   </div>
                   <div className="header-right">
                     <a
-                      href="https://www.cropsto.com/contact.aspx"
+                      href="https://cropsto.com/contact.aspx"
                       className="tf-btn gap-30"
                     >
                       <span className="text-style">Get In Touch!</span>

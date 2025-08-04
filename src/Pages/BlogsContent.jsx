@@ -3,12 +3,20 @@ import { useParams } from "react-router-dom";
 import { getBlogById } from "../functions/blog";
 import { UncontrolledCarousel } from "reactstrap";
 const BlogsContent = () => {
-  var host = "http://localhost:8000";
+  var host = "https://manage.cropsto.com";
   const { blogId } = useParams();
   const [blogData, setBlogData] = useState();
   useEffect(() => {
     (async () => {
       const blog = await getBlogById(blogId);
+      const date = new Date(blog.createdAt);
+      blog.createdAt = date
+        .toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        })
+        .replace(/ /g, "-");
 
       setBlogData(blog);
     })();
@@ -26,19 +34,21 @@ const BlogsContent = () => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="content">
-                  <h1 className="title">
-                    {blogData ? blogData?.title : "Blog Doesn't exist"}
-                  </h1>
+                  <h1 className="title">{blogData ? blogData?.title : ""}</h1>
                   <div className="icon-img">
                     <img src="/images/item/line-throw-title.png" />
                   </div>
                   <div className="breadcrumb">
-                    <a href="https://www.cropsto.com/index.html">Home</a>
+                    <a href="https://cropsto.com/index.html">Home</a>
+                    <div className="icon">
+                      <i className="icon-arrow-right1" />
+                    </div>
+                    <a href="https://cropsto.com/dynamic">blogs</a>
                     <div className="icon">
                       <i className="icon-arrow-right1" />
                     </div>
                     <a href="javascript:void(0)">
-                      {blogData ? blogData?.title : "Blog Doesn't exist"}
+                      {blogData ? blogData?.title : ""}
                     </a>
                   </div>
                 </div>
@@ -54,7 +64,7 @@ const BlogsContent = () => {
       {/* /.Main-content */}
       {!blogData ? (
         <h2 className="text-green d-flex justify-content-center py-5 my-5">
-          No blogs Available!
+          Loading...
         </h2>
       ) : (
         ""
@@ -73,8 +83,7 @@ const BlogsContent = () => {
                         data-bs-ride="carousel"
                         data-bs-interval="3000"
                         style={{
-                          width: "100%",
-                          maxWidth: "1000px",
+                          width: "auto",
                           height: "500px",
                           margin: "0 auto",
                         }}
@@ -90,7 +99,7 @@ const BlogsContent = () => {
                                 key={img}
                               >
                                 <img
-                                  src={`${host}/uploads/blogsbanner/${img}`}
+                                  src={`${host}/uploads/blogsBanner/${img}`}
                                   className="d-block w-100 h-100 object-fit-cover"
                                   alt="Slide 1"
                                 />
@@ -126,7 +135,7 @@ const BlogsContent = () => {
                       </div>
                     </div>
                     <div className="col-lg-12 col-12">
-                      <h6 className="text-light-green">June 19, 2024</h6>
+                      <h6 className="text-light-green">{blogData.createdAt}</h6>
                       <h2 className="title fw-7 text-anime-style-1 text-dark-green">
                         {blogData?.title}
                       </h2>
@@ -134,9 +143,15 @@ const BlogsContent = () => {
                   </div>
 
                   <div
-                    className="tour-infor"
+                    className="tour-infor contentCover"
                     dangerouslySetInnerHTML={{ __html: blogData?.content }}
                   ></div>
+                  <a
+                    href="https://cropsto.com/dynamic"
+                    class="gobackBtn gap-30 mx-auto p-4 rounded-4"
+                  >
+                    <span class="text-style">Go Back</span>
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /dynamic/
+
+# If the requested path is not an actual file, directory, or symbolic link,
+
+# then rewrite it to index.html.
+
+# This ensures existing static assets (JS, CSS, images) are served directly.
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule . index.html [L] # Changed from ^ to . for clarity, means "any character"
+</IfModule>

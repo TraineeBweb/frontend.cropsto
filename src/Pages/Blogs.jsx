@@ -3,11 +3,11 @@ import { getCategories } from "../functions/category";
 import { getCategoryByParams } from "../functions/blog";
 
 const Blogs = () => {
-  var host = "http://localhost:8000";
+  var host = "https://manage.cropsto.com";
 
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState("");
-  const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState();
   const [active, setActive] = useState("");
   useEffect(() => {
     (async () => {
@@ -44,7 +44,7 @@ const Blogs = () => {
                     <img src="./images/item/line-throw-title.png" alt="" />
                   </div>
                   <div className="breadcrumb">
-                    <a href="https://www.cropsto.com/index.html">Home</a>
+                    <a href="https://cropsto.com/index.html">Home</a>
                     <div className="icon">
                       <i className="icon-arrow-right1" />
                     </div>
@@ -95,12 +95,25 @@ const Blogs = () => {
                   <div className="widget-content-tab">
                     <div className="widget-content-inner active">
                       <div className="row">
-                        {blogs.length === 0 ? (
+                        {!blogs ? (
+                          <h2 className="text-green">Loading...</h2>
+                        ) : (
+                          ""
+                        )}
+                        {blogs?.length === 0 ? (
                           <h2 className="text-green">No blogs Available!</h2>
                         ) : (
                           ""
                         )}
-                        {blogs.map((blog) => {
+                        {blogs?.map((blog) => {
+                          const date = new Date(blog.createdAt);
+                          const dateString = date
+                            .toLocaleDateString("en-GB", {
+                              day: "2-digit",
+                              month: "long",
+                              year: "numeric",
+                            })
+                            .replace(/ /g, "-");
                           return (
                             <div
                               key={blog._id}
@@ -112,22 +125,22 @@ const Blogs = () => {
                                     <img
                                       className="lazyload"
                                       style={{ height: "450px", width: "auto" }}
-                                      data-src={`${host}/uploads/blogsbanner/${blog.banner[0]}`}
-                                      src={`${host}/uploads/blogsbanner/${blog.banner[0]}`}
+                                      data-src={`${host}/uploads/blogsBanner/${blog.banner[0]}`}
+                                      src={`${host}/uploads/blogsBanner/${blog.banner[0]}`}
                                       alt=""
                                     />
                                   </div>
                                 </div>
                                 <div className="content">
                                   <h3 className="title fw-6">
-                                    <p>15 November, 2024</p>
-                                    <a href="https://www.cropsto.com/blog-coffee-flavours.html">
+                                    <p>{dateString}</p>
+                                    <a href={`blogs/${blog._id}`}>
                                       {blog.title}
                                     </a>
                                   </h3>
                                   <div className="bot">
                                     <a
-                                      href={`/blogs/${blog._id}`}
+                                      href={`blogs/${blog._id}`}
                                       className="tf-btn-read blog-btn"
                                     >
                                       Read More

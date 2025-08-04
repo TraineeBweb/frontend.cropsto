@@ -10,7 +10,7 @@ const Footer = () => {
               <div className="footer-top">
                 <div className="footer-left">
                   <div className="logo">
-                    <a href="https://www.cropsto.com/index.html">
+                    <a href="https://cropsto.com/index.html">
                       <img src="/images/logo/logo-2.png" alt="" />
                     </a>
                   </div>
@@ -89,7 +89,7 @@ const Footer = () => {
                       </div>
                       <div className="content">
                         <a
-                          href="https://www.cropsto.com/blog-coffee-flavours.html"
+                          href="https://cropsto.com/blog-coffee-flavours.html"
                           className="title-post hover-text-secondary"
                         >
                           Coffee Flavors around the World!
@@ -103,7 +103,7 @@ const Footer = () => {
                       </div>
                       <div className="content">
                         <a
-                          href="https://www.cropsto.com/blog-sustainability-in-coffee-packaging.html"
+                          href="https://cropsto.com/blog-sustainability-in-coffee-packaging.html"
                           className="title-post hover-text-secondary"
                         >
                           Sustainability in Coffee...
@@ -124,7 +124,7 @@ const Footer = () => {
                   </h4>
                   <ul className="link-list tf-collapse-content">
                     <li className="item">
-                      <a href="https://www.cropsto.com/products.html">
+                      <a href="https://cropsto.com/products.html">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 448 512"
@@ -137,7 +137,7 @@ const Footer = () => {
                       </a>
                     </li>
                     <li className="item">
-                      <a href="https://www.cropsto.com/technology-innovation.html">
+                      <a href="https://cropsto.com/technology-innovation.html">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 448 512"
@@ -150,7 +150,7 @@ const Footer = () => {
                       </a>
                     </li>
                     <li className="item">
-                      <a href="/">
+                      <a href="/dynamic">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 448 512"
@@ -163,7 +163,7 @@ const Footer = () => {
                       </a>
                     </li>
                     <li className="item">
-                      <a href="https://www.cropsto.com/faqs.html">
+                      <a href="https://cropsto.com/faqs.html">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 448 512"
@@ -176,7 +176,7 @@ const Footer = () => {
                       </a>
                     </li>
                     <li className="item">
-                      <a href="https://www.cropsto.com/contact.aspx">
+                      <a href="https://cropsto.com/contact.aspx">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 448 512"
@@ -230,7 +230,7 @@ const Footer = () => {
                 <p className="no-copy font-cropsto text-center">
                   Copyright © 2025{" "}
                   <span>
-                    <a href="https://www.cropsto.com/index.html">CropSto</a>.
+                    <a href="https://cropsto.com/index.html">CropSto</a>.
                   </span>
                   All Rights Reserved.
                 </p>
