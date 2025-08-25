@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { getCategories } from "../functions/category";
-import { getCategoryByParams } from "../functions/blog";
+import { getCategoryByParams, getBlogsCoverImage } from "../functions/blog";
+import BlogsCover from "../components/BlogsCover";
 
 const Blogs = () => {
-  var host = "https://manage.cropsto.com";
+  var host = import.meta.env.VITE_APP_BACKEND_HOST;
 
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState("");
   const [blogs, setBlogs] = useState();
   const [active, setActive] = useState("");
+  const [loadingBlogs, setLoadingBlogs] = useState(false); // New loading state
+
   useEffect(() => {
     (async () => {
       setCategories(await getCategories());
@@ -16,55 +19,37 @@ const Blogs = () => {
   }, []);
   useEffect(() => {
     (async () => {
+      setLoadingBlogs(true); // Set loading to true before fetching
       var blg = await getCategoryByParams({ category });
       setBlogs(blg.data);
+      setLoadingBlogs(false); // Set loading to false after fetching
     })();
   }, [category]);
+
   useEffect(() => {
     (async () => {
+      setLoadingBlogs(true); // Set loading to true before fetching
       var blg = await getCategoryByParams();
       setBlogs(blg.data);
+      setLoadingBlogs(false); // Set loading to false after fetching
     })();
   }, []);
   return (
     <>
       {/* /.Header */}
-      {/* Page-title */}
-      <div className="page-title page-about-us">
-        <div className="rellax" data-rellax-speed={5}>
-          <img src="images/new-home/breadcrumb.jpg" alt="" />
-        </div>
-        <div className="content-wrap">
-          <div className="tf-container w-1290">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="content">
-                  <h1 className="title">Our Blogs</h1>
-                  <div className="icon-img">
-                    <img src="./images/item/line-throw-title.png" alt="" />
-                  </div>
-                  <div className="breadcrumb">
-                    <a href="https://cropsto.com/index.html">Home</a>
-                    <div className="icon">
-                      <i className="icon-arrow-right1" />
-                    </div>
-                    <a href="javascript:void(0)"> Our Blogs</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="img-item item-2">
-          <img src="images/item/grass.png" alt="" />
-        </div>
-      </div>
+      <BlogsCover
+        title="Our Blogs"
+        breadcrumb={[
+          { label: "Home", link: "https://cropsto.com/index.html" },
+          { label: "Our Blogs", link: "#" },
+        ]}
+      />
       {/* /.Page-title */}
       {/* Main-content */}
       <div className="main-content page-index">
         {/* Section tab */}
         <section className="s-tab blogs-area s-blog-post blog-area">
-          <div className="tf-container">
+          <div className="container">
             <div className="row">
               <div className="col-lg-12">
                 <div className="wg-tabs style-2">
@@ -95,62 +80,78 @@ const Blogs = () => {
                   <div className="widget-content-tab">
                     <div className="widget-content-inner active">
                       <div className="row">
-                        {!blogs ? (
-                          <h2 className="text-green">Loading...</h2>
-                        ) : (
-                          ""
-                        )}
-                        {blogs?.length === 0 ? (
-                          <h2 className="text-green">No blogs Available!</h2>
-                        ) : (
-                          ""
-                        )}
-                        {blogs?.map((blog) => {
-                          const date = new Date(blog.createdAt);
-                          const dateString = date
-                            .toLocaleDateString("en-GB", {
-                              day: "2-digit",
-                              month: "long",
-                              year: "numeric",
-                            })
-                            .replace(/ /g, "-");
-                          return (
+                        {loadingBlogs ? ( // Conditionally render loader
+                          <div className="col-lg-12 text-center my-5">
                             <div
-                              key={blog._id}
-                              className="col-lg-4 col-12 col-md-4 mb-5"
+                              className="spinner-border text-success p-4"
+                              role="status"
                             >
-                              <article className="article-blog-item type-3 style-2 img-hover">
-                                <div className="image">
-                                  <div className="video-wrap hover-item">
-                                    <img
-                                      className="lazyload"
-                                      style={{ height: "450px", width: "auto" }}
-                                      data-src={`${host}/uploads/blogsBanner/${blog.banner[0]}`}
-                                      src={`${host}/uploads/blogsBanner/${blog.banner[0]}`}
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
-                                <div className="content">
-                                  <h3 className="title fw-6">
-                                    <p>{dateString}</p>
-                                    <a href={`blogs/${blog._id}`}>
-                                      {blog.title}
-                                    </a>
-                                  </h3>
-                                  <div className="bot">
-                                    <a
-                                      href={`blogs/${blog._id}`}
-                                      className="tf-btn-read blog-btn"
-                                    >
-                                      Read More
-                                    </a>
-                                  </div>
-                                </div>
-                              </article>
+                              <span className="visually-hidden">
+                                Loading...
+                              </span>
                             </div>
-                          );
-                        })}
+                          </div>
+                        ) : (
+                          <>
+                            {blogs?.length === 0 ? (
+                              <h2 className="text-green">
+                                No blogs Available!
+                              </h2>
+                            ) : (
+                              ""
+                            )}
+                            {blogs?.map((blog) => {
+                              console.log(blog);
+                              const date = new Date(blog.createdAt);
+                              const dateString = date
+                                .toLocaleDateString("en-GB", {
+                                  day: "2-digit",
+                                  month: "long",
+                                  year: "numeric",
+                                })
+                                .replace(/ /g, "-");
+                              return (
+                                <div
+                                  key={blog.slug}
+                                  className="col-lg-4 col-12 col-md-4 mb-5"
+                                >
+                                  <article className="article-blog-item type-3 style-2 img-hover">
+                                    <div className="image">
+                                      <div className="video-wrap hover-item">
+                                        <img
+                                          className="lazyload"
+                                          style={{
+                                            height: "450px",
+                                            width: "auto",
+                                          }}
+                                          data-src={`${host}/uploads/blogsBanner/${blog.banner[0]}`}
+                                          src={`${host}/uploads/blogsBanner/${blog.banner[0]}`}
+                                          alt=""
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className="content">
+                                      <h3 className="title fw-6">
+                                        <p>{dateString}</p>
+                                        <a href={`blogs/${blog.slug}`}>
+                                          {blog.title}
+                                        </a>
+                                      </h3>
+                                      <div className="bot">
+                                        <a
+                                          href={`blogs/${blog.slug}`}
+                                          className="tf-btn-read blog-btn"
+                                        >
+                                          Read More
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </article>
+                                </div>
+                              );
+                            })}
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -178,7 +179,7 @@ const Blogs = () => {
         >
           <i className="icon-close" />
         </button>
-        <div className="tf-container">
+        <div className="container">
           <div className="row">
             <div className="col-12">
               <div className="offcanvas-body">

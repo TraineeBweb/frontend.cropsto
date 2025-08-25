@@ -1,6 +1,7 @@
 import React from "react";
 
 const Navbar = () => {
+  const [active, setActive] = React.useState(false);
   return (
     <>
       {/* /.Top-bar */}
@@ -75,7 +76,7 @@ const Navbar = () => {
                       <a href="https://cropsto.com/products.html">Products</a>
                     </li>
                     <li className="item has-child ">
-                      <a href="javascript:void(0)">Sustainability</a>
+                      <a href="#">Sustainability</a>
                       <ul className="sub-nav">
                         <li>
                           <a href="https://cropsto.com/recycling.html">
@@ -90,16 +91,18 @@ const Navbar = () => {
                       </ul>
                     </li>
                     <li className="item has-child current-menu">
-                      <a href="/dynamic">Blog</a>
+                      <a href="/blogs">Blog</a>
                     </li>
                     <li className="item has-child">
-                      <a href="https://cropsto.com/contact.aspx">Contact Us</a>
+                      <a href="https://cropsto.com/contactus.html">
+                        Contact Us
+                      </a>
                     </li>
                   </ul>
                 </div>
                 <div className="header-right">
                   <a
-                    href="https://cropsto.com/contact.aspx"
+                    href="https://cropsto.com/contactus.html"
                     className="tf-btn gap-30"
                   >
                     <span className="text-style">Get In Touch!</span>
@@ -107,13 +110,23 @@ const Navbar = () => {
                       <i className="icon-arrow_right" />
                     </div>
                   </a>
-                  <div className="mobile-button">
+                  <div
+                    className="mobile-button"
+                    onClick={() => {
+                      setActive(!active);
+                    }}
+                  >
                     <span />
                   </div>
                 </div>
               </div>
-              <div className="mobile-nav-wrap">
-                <div className="overlay-mobile-nav" />
+              <div className={`mobile-nav-wrap ${active ? "active" : ""}`}>
+                <div
+                  className="overlay-mobile-nav"
+                  onClick={() => {
+                    setActive(!active);
+                  }}
+                />
                 <div className="inner-mobile-nav overflow-y-auto">
                   <div className="top">
                     <div className="logo">
@@ -128,7 +141,12 @@ const Navbar = () => {
                           src="/images/logo/logo-2.png"
                         />
                       </a>
-                      <div className="mobile-nav-close">
+                      <div
+                        className="mobile-nav-close"
+                        onClick={() => {
+                          setActive(!active);
+                        }}
+                      >
                         <i className="icon-close" />
                       </div>
                     </div>
@@ -158,15 +176,14 @@ const Navbar = () => {
                             Products
                           </a>
                         </li>
-                        <li className="menu-item menu-item-has-children-mobile ">
-                          <a
-                            className="item-menu-mobile"
-                            href="javascript:void(0)"
-                          >
+                        <li className="menu-item menu-item-has-children-mobile">
+                          <a className="item-menu-mobile" href="#">
                             Sustainability
-                            <i className="icon-arrow_down" />
                           </a>
-                          <ul className="sub-menu-mobile">
+                          <ul
+                            className="sub-menu-mobile"
+                            style={{ display: "block" }}
+                          >
                             <li className="menu-item">
                               <a href="https://cropsto.com/recycling.html">
                                 Recycling
@@ -187,7 +204,7 @@ const Navbar = () => {
                         <li className="menu-item menu-item-has-children-mobile ">
                           <a
                             className="item-menu-mobile"
-                            href="https://cropsto.com/contact.aspx"
+                            href="https://cropsto.com/contactus.html"
                           >
                             Contact Us
                           </a>
@@ -276,7 +293,7 @@ const Navbar = () => {
                         <a href="https://cropsto.com/products.html">Products</a>
                       </li>
                       <li className="item has-child ">
-                        <a href="javascript:void(0)">Sustainability</a>
+                        <a href="#">Sustainability</a>
                         <ul className="sub-nav">
                           <li>
                             <a href="https://cropsto.com/recycling.html">
@@ -294,7 +311,7 @@ const Navbar = () => {
                         <a href="/">Blog</a>
                       </li>
                       <li className="item has-child">
-                        <a href="https://cropsto.com/contact.aspx">
+                        <a href="https://cropsto.com/contactus.html">
                           Contact Us
                         </a>
                       </li>
@@ -302,7 +319,7 @@ const Navbar = () => {
                   </div>
                   <div className="header-right">
                     <a
-                      href="https://cropsto.com/contact.aspx"
+                      href="https://cropsto.com/contactus.html"
                       className="tf-btn gap-30"
                     >
                       <span className="text-style">Get In Touch!</span>

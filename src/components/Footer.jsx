@@ -150,7 +150,7 @@ const Footer = () => {
                       </a>
                     </li>
                     <li className="item">
-                      <a href="/dynamic">
+                      <a href="/blogs">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 448 512"
@@ -176,7 +176,7 @@ const Footer = () => {
                       </a>
                     </li>
                     <li className="item">
-                      <a href="https://cropsto.com/contact.aspx">
+                      <a href="https://cropsto.com/contactus.html">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 448 512"

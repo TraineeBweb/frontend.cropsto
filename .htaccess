@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /dynamic/
+  RewriteBase /blogs/
 
 # If the requested path is not an actual file, directory, or symbolic link,
 

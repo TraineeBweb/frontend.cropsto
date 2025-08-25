@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getBlogById } from "../functions/blog";
 import { UncontrolledCarousel } from "reactstrap";
+import BlogsCover from "../components/BlogsCover";
+
 const BlogsContent = () => {
-  var host = "https://manage.cropsto.com";
   const { blogId } = useParams();
   const [blogData, setBlogData] = useState();
   useEffect(() => {
@@ -25,41 +26,14 @@ const BlogsContent = () => {
   return (
     <>
       {/* Page-title */}
-      <div className="page-title page-about-us">
-        <div className="rellax" data-rellax-speed={5}>
-          <img src="/images/new-home/breadcrumb.jpg" alt="" />
-        </div>
-        <div className="content-wrap">
-          <div className="tf-container w-1290">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="content">
-                  <h1 className="title">{blogData ? blogData?.title : ""}</h1>
-                  <div className="icon-img">
-                    <img src="/images/item/line-throw-title.png" />
-                  </div>
-                  <div className="breadcrumb">
-                    <a href="https://cropsto.com/index.html">Home</a>
-                    <div className="icon">
-                      <i className="icon-arrow-right1" />
-                    </div>
-                    <a href="https://cropsto.com/dynamic">blogs</a>
-                    <div className="icon">
-                      <i className="icon-arrow-right1" />
-                    </div>
-                    <a href="javascript:void(0)">
-                      {blogData ? blogData?.title : ""}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="img-item item-2">
-          <img src="/images/item/grass.png" alt="" />
-        </div>
-      </div>
+      <BlogsCover
+        title={blogData ? blogData?.title : ""}
+        breadcrumb={[
+          { label: "Home", link: "https://cropsto.com/index.html" },
+          { label: "blogs", link: "https://cropsto.com/blogs" },
+          { label: blogData ? blogData?.title : "", link: "#" },
+        ]}
+      />
       {/* /.Page-title */}
       {/* /.Main-content */}
       {!blogData ? (
@@ -71,7 +45,7 @@ const BlogsContent = () => {
       )}
       {blogData && (
         <div className="main-content page-event-detail blog-detail">
-          <div className="tf-container">
+          <div className="container">
             <div className="row justify-center">
               <div className="col-lg-10 col-12">
                 <div className="content">
@@ -84,7 +58,6 @@ const BlogsContent = () => {
                         data-bs-interval="3000"
                         style={{
                           width: "auto",
-                          height: "500px",
                           margin: "0 auto",
                         }}
                       >
@@ -99,8 +72,10 @@ const BlogsContent = () => {
                                 key={img}
                               >
                                 <img
-                                  src={`${host}/uploads/blogsBanner/${img}`}
-                                  className="d-block w-100 h-100 object-fit-cover"
+                                  src={`${
+                                    import.meta.env.VITE_APP_BACKEND_HOST
+                                  }/uploads/blogsBanner/${img}`}
+                                  className="d-block w-100 h-100 object-fit-contain"
                                   alt="Slide 1"
                                 />
                               </div>
@@ -147,7 +122,7 @@ const BlogsContent = () => {
                     dangerouslySetInnerHTML={{ __html: blogData?.content }}
                   ></div>
                   <a
-                    href="https://cropsto.com/dynamic"
+                    href="https://cropsto.com/blogs"
                     class="gobackBtn gap-30 mx-auto p-4 rounded-4"
                   >
                     <span class="text-style">Go Back</span>
@@ -175,7 +150,7 @@ const BlogsContent = () => {
         >
           <i className="icon-close" />
         </button>
-        <div className="tf-container">
+        <div className="container">
           <div className="row">
             <div className="col-12">
               <div className="offcanvas-body">
